@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { useQuery } from "@apollo/react-hooks";
+import gql from "graphql-tag";
 
-function App() {
+const TodosQuery = gql`
+  {
+    todos {
+      id
+      text
+      complete
+    }
+  }
+`;
+
+const App = () => {
+  const { loading, data } = useQuery(TodosQuery);
+  console.log(loading, data);
+
+  if (loading) {
+    return null;
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <form>
+        <input type="text" name="name" placeholder="Enter a task" />
+        <input type="submit" value="Submit" />
+      </form>
+      <ul>
+        {data.todos.map(todo => (
+          <li>{todo.text}</li>
+        ))}
+      </ul>
+    </>
   );
-}
+};
 
 export default App;
