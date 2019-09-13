@@ -14,7 +14,6 @@ const TodosQuery = gql`
 
 const App = () => {
   const { loading, data } = useQuery(TodosQuery);
-  console.log(loading, data);
 
   if (loading) {
     return null;
@@ -27,7 +26,7 @@ const App = () => {
       </form>
       <ul>
         {data.todos.map(todo => (
-          <li>{todo.text}</li>
+          <li key={`${todo.id}`}>{todo.text}</li>
         ))}
       </ul>
     </>
