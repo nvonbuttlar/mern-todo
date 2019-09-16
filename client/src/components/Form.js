@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TextField, Button } from "@material-ui/core";
+import { Button, TextField } from "@material-ui/core";
 
 const Form = props => {
   const [text, setText] = useState("");
@@ -27,7 +27,6 @@ const Form = props => {
         margin="normal"
         onChange={e => setText(e.target.value)}
         onKeyDown={e => handleKeyDown(e)}
-        required
         value={text}
         variant="outlined"
       />
@@ -37,7 +36,7 @@ const Form = props => {
         raised
         variant="contained"
       >
-        Git'r Done!
+        Add
       </Button>
     </div>
   );

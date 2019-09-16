@@ -1,4 +1,4 @@
-# Another Todo List
+# Another To Do List
 
 A full-stack todo list application built with Mongo DB, Express, React and Node (MERN Stack).
 
@@ -26,3 +26,10 @@ A full-stack todo list application built with Mongo DB, Express, React and Node 
 - "react": "^16.9.0",
 - "react-dom": "^16.9.0",
 - "react-scripts": "3.1.1"
+
+## Proposed Features
+
+- change how the list populates (new task at top or bottom)
+- provide colour scheme and design theme (MUI, SCSS?)
+- text the list to yourself
+- No sign in, just a blank slate for all user

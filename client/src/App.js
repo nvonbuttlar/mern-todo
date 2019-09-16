@@ -13,6 +13,7 @@ import { ListItemIcon } from "@material-ui/core";
 import { ListItemSecondaryAction } from "@material-ui/core";
 import { ListItemText } from "@material-ui/core";
 import { Paper } from "@material-ui/core";
+import { withStyles } from "@material-ui/core";
 
 import CancelIcon from "@material-ui/icons/Cancel";
 
@@ -109,50 +110,51 @@ const App = () => {
 
   if (error) {
     return <p> A error has occured 😕 </p>;
-  } 
-
+  }
   return (
-    <div>
-      <div style={{ display: "flex" }}>
-        <div style={{ margin: "auto", width: 400 }}>
-          <Paper>
-            <Form submit={handleCreate} />
-            <List>
-              {data.todos.map(todo => {
-                return (
-                  <ListItem
-                    key={todo.id}
-                    role={undefined}
-                    dense
-                    button
-                    onClick={() => {
-                      handleCheckbox(todo);
-                    }}
-                    s
-                  >
-                    <ListItemIcon>
-                      <Checkbox
-                        edge="start"
-                        checked={todo.complete}
-                        tabIndex={-1}
-                        disableRipple
-                      />
-                    </ListItemIcon>
-                    <ListItemText primary={todo.text} />
-                    <ListItemSecondaryAction>
-                      <IconButton onClick={() => handleRemove(todo)}>
-                        <CancelIcon />
-                      </IconButton>
-                    </ListItemSecondaryAction>
-                  </ListItem>
-                );
-              })}
-            </List>
-          </Paper>
-        </div>
+    <div style={{ display: "flex" }}>
+      <div style={{ margin: "auto", width: 400 }}>
+        <Paper>
+          <Form submit={handleCreate} />
+          <List>
+            {data.todos.map(todo => {
+              return (
+                <ListItem
+                  key={todo.id}
+                  role={undefined}
+                  dense
+                  button
+                  onClick={() => {
+                    handleCheckbox(todo);
+                  }}
+                  s
+                >
+                  <ListItemIcon>
+                    <Checkbox
+                      edge="start"
+                      checked={todo.complete}
+                      tabIndex={-1}
+                      disableRipple
+                    />
+                  </ListItemIcon>
+                  <ListItemText primary={todo.text} />
+                  <ListItemSecondaryAction>
+                    <IconButton onClick={() => handleRemove(todo)}>
+                      <CancelIcon />
+                    </IconButton>
+                  </ListItemSecondaryAction>
+                </ListItem>
+              );
+            })}
+          </List>
+        </Paper>
       </div>
     </div>
   );
 };
 
-export default App;
+const styles = {
+  root: {}
+};
+
+export default withStyles(styles)(App);
