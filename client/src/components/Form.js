@@ -20,7 +20,7 @@ const Form = props => {
   };
 
   return (
-    <>
+    <div>
       <TextField
         fullWidth
         label="Enter a task"
@@ -29,15 +29,17 @@ const Form = props => {
         onKeyDown={e => handleKeyDown(e)}
         required
         value={text}
+        variant="outlined"
       />
       <Button
         color="primary"
         onClick={() => handleSubmit()}
+        raised
         variant="contained"
       >
         Git'r Done!
       </Button>
-    </>
+    </div>
   );
 };
 
