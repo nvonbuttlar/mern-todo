@@ -3,15 +3,17 @@ import { TextField, Button } from "@material-ui/core";
 
 const Form = props => {
   const [text, setText] = useState("");
-  const { error, submit } = props;
+  const { submit } = props;
 
   const handleSubmit = () => {
-    submit(text);
-    setText("");
+    if (text !== "" && text.length > 2) {
+      submit(text);
+      setText("");
+    }
   };
 
   const handleKeyDown = e => {
-    if (e.key === "Enter") {
+    if (e.key === "Enter" && text !== "" && text.length > 2) {
       submit(text);
       setText("");
     }
@@ -25,6 +27,7 @@ const Form = props => {
         margin="normal"
         onChange={e => setText(e.target.value)}
         onKeyDown={e => handleKeyDown(e)}
+        required
         value={text}
       />
       <Button

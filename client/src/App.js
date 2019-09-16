@@ -116,7 +116,7 @@ const App = () => {
       <div style={{ display: "flex" }}>
         <div style={{ margin: "auto", width: 400 }}>
           <Paper>
-            <Form error={error} submit={handleCreate} />
+            <Form submit={handleCreate} />
             <List>
               {data.todos.map(todo => {
                 return (
