@@ -108,8 +108,8 @@ const App = () => {
   }
 
   if (error) {
-    return <p> A error has occured!</p>;
-  }
+    return <p> A error has occured 😕 </p>;
+  } 
 
   return (
     <div>

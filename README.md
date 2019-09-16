@@ -4,9 +4,9 @@ A full-stack todo list application built with Mongo DB, Express, React and Node 
 
 ## Getting Started
 
-After forking or downloading the repository, navigate to the server directory and `npm install` to download all dependencies. Once dependencies have been installed type `node index.js` to start the server.
+1. After forking or downloading the repository, navigate to the server directory and `npm install` to download all dependencies. Once dependencies have been installed type `node index.js` to start the server.
 
-Next, navigate to the client folder and `npm install` to download all dependencies followed by `npm start` to start the react server.
+2. Navigate to the client folder and `npm install` to download all dependencies followed by `npm start` to start the react server.
 
 ## Dependencies
 
