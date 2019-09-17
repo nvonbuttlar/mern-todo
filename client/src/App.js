@@ -17,6 +17,7 @@ import { ListItemText } from "@material-ui/core";
 import { Paper } from "@material-ui/core";
 
 import CancelIcon from "@material-ui/icons/Cancel";
+import { borderLeft } from "@material-ui/system";
 
 const TodosQuery = gql`
   {
@@ -116,44 +117,45 @@ const App = () => {
 
   return (
     <div className={classes.root}>
-      <h1>Candoo</h1>
-      <h6>
-        That's right... just <i>another</i> ordinary todo list!
-      </h6>
-      <div className={classes.list}>
+      <div className={classes.titleCtnr}>
+        <h1 className={classes.title}>Candoo</h1>
+        <h5 className={classes.caption}>
+          That's right... just <i>another</i> ordinary todo list!
+        </h5>
+      </div>
+
+      <div className={classes.main}>
         <Form submit={handleCreate} />
-        <Paper>
-          <List>
-            {data.todos.map(todo => {
-              return (
-                <ListItem
-                  key={todo.id}
-                  role={undefined}
-                  dense
-                  button
-                  onClick={() => {
-                    handleCheckbox(todo);
-                  }}
-                >
-                  <ListItemIcon>
-                    <Checkbox
-                      edge="start"
-                      checked={todo.complete}
-                      tabIndex={-1}
-                      disableRipple
-                    />
-                  </ListItemIcon>
-                  <ListItemText primary={todo.text} />
-                  <ListItemSecondaryAction>
-                    <IconButton onClick={() => handleRemove(todo)}>
-                      <CancelIcon />
-                    </IconButton>
-                  </ListItemSecondaryAction>
-                </ListItem>
-              );
-            })}
-          </List>
-        </Paper>
+        <List className={classes.list}>
+          {data.todos.map(todo => {
+            return (
+              <ListItem
+                button
+                className={classes.listItem}
+                key={todo.id}
+                onClick={() => {
+                  handleCheckbox(todo);
+                }}
+                role={undefined}
+              >
+                <ListItemIcon>
+                  <Checkbox
+                    edge="start"
+                    checked={todo.complete}
+                    tabIndex={-1}
+                    disableRipple
+                  />
+                </ListItemIcon>
+                <ListItemText primary={todo.text} />
+                <ListItemSecondaryAction>
+                  <IconButton onClick={() => handleRemove(todo)}>
+                    <CancelIcon />
+                  </IconButton>
+                </ListItemSecondaryAction>
+              </ListItem>
+            );
+          })}
+        </List>
       </div>
     </div>
   );
@@ -166,8 +168,26 @@ const useStyles = makeStyles({
     alignItems: "center",
     margin: "2.5em"
   },
+  titleCtnr: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    borderRadius: "6px 0px 6px 6px"
+  },
+  title: { color: "#3f51b5" },
+  caption: { margin: "0px 0px 20px 0px" },
+  main: {
+    width: "45%",
+    margin: "20px 0px",
+    borderBottomLeftRadius: 6,
+    borderBottomRightRadius: 6,
+    borderBottom: "2px solid #3f51b5"
+  },
   list: {
-    width: "35%",
+    borderRadius: 6
+  },
+  listItem: {
+    borderBottomRightRadius: 6
   }
 });
 

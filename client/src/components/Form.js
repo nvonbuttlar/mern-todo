@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
 import { Button } from "@material-ui/core";
-import { Paper } from "@material-ui/core";
 import { TextField } from "@material-ui/core";
 
 const Form = props => {
@@ -33,6 +32,7 @@ const Form = props => {
         label="Enter a task"
         onChange={e => setText(e.target.value)}
         onKeyDown={e => handleKeyDown(e)}
+        type="text"
         value={text}
         variant="outlined"
       />
@@ -54,19 +54,19 @@ const useStyles = makeStyles({
     display: "flex",
     margin: "10px 0px",
     borderRadius: 6,
-    border: "1px solid whitesmoke",
+    borderBottom: "2px solid #3f51b5"
   },
   textField: {
     [`& fieldset`]: {
-      border: "none",
       borderTopRightRadius: 0,
-      borderBottomRightRadius: 0
+      borderBottomRightRadius: 0,
+      border: "none",
+      zIndex: 1
     }
   },
   button: {
-    borderTopLeftRadius: 0,
-    borderBottomLeftRadius: 0,
-    boxShadow: "none",
+    borderRadius: "0px 0px 4px 0px",
+    boxShadow: "none"
   }
 });
 
