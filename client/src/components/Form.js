@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
 import { Button } from "@material-ui/core";
+import { Paper } from "@material-ui/core";
 import { TextField } from "@material-ui/core";
 
 const Form = props => {
@@ -53,10 +54,11 @@ const useStyles = makeStyles({
     display: "flex",
     margin: "10px 0px",
     borderRadius: 6,
+    border: "1px solid whitesmoke",
   },
   textField: {
     [`& fieldset`]: {
-      border: "1px solid whitesmoke",
+      border: "none",
       borderTopRightRadius: 0,
       borderBottomRightRadius: 0
     }

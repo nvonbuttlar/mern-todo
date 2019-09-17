@@ -29,6 +29,7 @@ A full-stack todo list application built with Mongo DB, Express, React and Node 
 
 ## Proposed Features
 
+- add dropdown for notes
 - change how the list populates (new task at top or bottom)
 - provide colour scheme and design theme (MUI, SCSS?)
 - text the list to yourself

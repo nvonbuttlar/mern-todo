@@ -116,6 +116,10 @@ const App = () => {
 
   return (
     <div className={classes.root}>
+      <h1>Candoo</h1>
+      <h6>
+        That's right... just <i>another</i> ordinary todo list!
+      </h6>
       <div className={classes.list}>
         <Form submit={handleCreate} />
         <Paper>
@@ -158,11 +162,12 @@ const App = () => {
 const useStyles = makeStyles({
   root: {
     display: "flex",
-    justifyContent: "center",
+    flexDirection: "column",
+    alignItems: "center",
     margin: "2.5em"
   },
   list: {
-    width: "35%"
+    width: "35%",
   }
 });
 
