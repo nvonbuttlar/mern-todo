@@ -4,6 +4,8 @@ import gql from "graphql-tag";
 
 import Form from "./components/Form";
 
+import { makeStyles } from "@material-ui/core/styles";
+
 import { Checkbox } from "@material-ui/core";
 import { CircularProgress } from "@material-ui/core";
 import { IconButton } from "@material-ui/core";
@@ -13,7 +15,6 @@ import { ListItemIcon } from "@material-ui/core";
 import { ListItemSecondaryAction } from "@material-ui/core";
 import { ListItemText } from "@material-ui/core";
 import { Paper } from "@material-ui/core";
-import { withStyles } from "@material-ui/core";
 
 import CancelIcon from "@material-ui/icons/Cancel";
 
@@ -50,7 +51,8 @@ const CreateMutation = gql`
 `;
 
 const App = () => {
-  const { loading, error, data } = useQuery(TodosQuery);
+  const classes = useStyles();
+  const { data, error, loading } = useQuery(TodosQuery);
   const [updateTodo] = useMutation(UpdateMutation);
   const [removeTodo] = useMutation(RemoveMutation);
   const [createTodo] = useMutation(CreateMutation);
@@ -111,11 +113,12 @@ const App = () => {
   if (error) {
     return <p> A error has occured 😕 </p>;
   }
+
   return (
-    <div style={{ display: "flex" }}>
-      <div style={{ margin: "auto", width: 400 }}>
+    <div className={classes.root}>
+      <div className={classes.list}>
+        <Form submit={handleCreate} />
         <Paper>
-          <Form submit={handleCreate} />
           <List>
             {data.todos.map(todo => {
               return (
@@ -127,7 +130,6 @@ const App = () => {
                   onClick={() => {
                     handleCheckbox(todo);
                   }}
-                  s
                 >
                   <ListItemIcon>
                     <Checkbox
@@ -153,8 +155,15 @@ const App = () => {
   );
 };
 
-const styles = {
-  root: {}
-};
+const useStyles = makeStyles({
+  root: {
+    display: "flex",
+    justifyContent: "center",
+    margin: "2.5em"
+  },
+  list: {
+    width: "35%"
+  }
+});
 
-export default withStyles(styles)(App);
+export default App;
